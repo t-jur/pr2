@@ -11,7 +11,7 @@ public class Student {
   private String studiengang = "";
 
   public static final int RUECKMELDUNG_GEBUEHR = 312;
-  public static final String[] FVI = {"Data Science", "Druck- und Medientechnik", "IT-Sicherheit Online", "Medieninformatik", "Medieninformatik Online", "Screen Based Media", "Technische Informatik - Embedded Systems"};
+  public static final String[] FVI = {"Data Science", "Druck- und Medientechnik", "IT-Sicherheit Online", "Medieninformatik", "Medieninformatik Online", "Screen Based Media", "Technische Informatik"};
 
   //-------------------------------
   // Konstruktor
@@ -32,13 +32,13 @@ public class Student {
         throw new RegistrationNumberException(inputarr[1]);
     }
       this.studiengang = inputarr[2];
-      if (!FVI.contains(inputarr[2])){
+      if (!Arrays.asList(FVI).contains(inputarr[2])){
         throw new WrongCourseOfStudiesException(inputarr[2]);
     }
 
     if (Integer.parseInt(inputarr[3]) < RUECKMELDUNG_GEBUEHR){
       int diff = RUECKMELDUNG_GEBUEHR-Integer.parseInt(inputarr[3]);
-      throw new NotPaidTuitionFeeException(toString(diff));
+      throw new NotPaidTuitionFeeException(String.valueOf(diff));
     }
 
   }

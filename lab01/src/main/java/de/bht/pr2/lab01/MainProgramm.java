@@ -47,7 +47,7 @@ public class MainProgramm {
 			try {
 				Student student = new Student(datenZeile);
 				studenten.add(student);
-			} catch(StudentParseException e){
+			} catch(StudentParseException | WrongCourseOfStudiesException | NotPaidTuitionFeeException | RegistrationNumberException e){
 				System.out.println(e);
 			}
 			
