@@ -11,23 +11,4 @@
     <groupId>de.bht</groupId>
     <version>1.0.0</version>
   </parent>
-
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <groupId>org.apache.maven.plugins</groupId>
-        <version>2.22.2</version>
-      </plugin>
-    </plugins>
-  </build>
-
-  <dependencies>
-    <dependency>
-      <artifactId>junit-jupiter</artifactId>
-      <groupId>org.junit.jupiter</groupId>
-      <version>5.9.1</version>
-    </dependency>
-  </dependencies>
-
 </project>
