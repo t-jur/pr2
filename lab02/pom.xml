@@ -11,4 +11,14 @@
     <groupId>de.bht</groupId>
     <version>1.0.0</version>
   </parent>
+
+  <dependencies>
+    <!-- ... -->
+    <dependency>
+      <artifactId>junit-jupiter</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <version>5.9.1</version>
+    </dependency>
+    <!-- ... -->
+  </dependencies>
 </project>

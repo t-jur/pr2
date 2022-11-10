@@ -1,4 +1,4 @@
-package de.bht.pr2.lab01;
+package de.bht.pr2.lab02.part1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +55,7 @@ public class MainProgramm {
 			// Ende: Schreiben bzw. aendern Sie den Code BIS hier
 			//---------------------------
 		}
+		
 		// Zur Bestaetigung, die Liste in der Console drucken
 		System.out.println("Liste von Student-Objekten:");
 		for (Student student : studenten) {

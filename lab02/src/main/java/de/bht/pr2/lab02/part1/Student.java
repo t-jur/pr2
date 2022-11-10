@@ -1,84 +1,78 @@
 package de.bht.pr2.lab02.part1;
 
+import java.util.Arrays;
+
 public class Student {
 
-  public static final int TUITION_FEE = 312;
+  //-------------------------------------------
+  // Attribute
   private String name = "";
-  private int registrationNumber = 0;
-  private String courseOfStudies = "";
+  private int matrikelnummer = 0;
+  private String studiengang = "";
 
-  public Student(String data)
-      throws StudentParseException, RegistrationNumberException, WrongCourseOfStudiesException, NotPaidTuitionFeeException {
+  public static final int RUECKMELDUNG_GEBUEHR = 312;
+  public static final String[] FVI = {"Data Science", "Druck- und Medientechnik", "IT-Sicherheit Online", "Medieninformatik", "Medieninformatik Online", "Screen Based Media", "Technische Informatik"};
 
-    String[] parts = data.split(",");
+  //-------------------------------
+  // Konstruktor
+  // Passen Sie den Konstruktor an
+  //-------------------------------
+  public Student(String datenZeile) throws StudentParseException, RegistrationNumberException, WrongCourseOfStudiesException, NotPaidTuitionFeeException{
 
-    if (parts.length != 4) {
-      throw new StudentParseException("Not enough parts in data: '" + data + "'.");
+      String[] inputarr = datenZeile.split(",");
+      if (inputarr.length != 4){
+        System.out.println(datenZeile);
+        throw new StudentParseException(datenZeile);
+      }
+
+      this.name = inputarr[0];
+      try {
+        this.matrikelnummer = Integer.parseInt(inputarr[1]);
+      } catch(NumberFormatException e){
+        throw new RegistrationNumberException(inputarr[1]);
+    }
+      this.studiengang = inputarr[2];
+      if (!Arrays.asList(FVI).contains(inputarr[2])){
+        throw new WrongCourseOfStudiesException(inputarr[2]);
     }
 
-    name = parts[0];
-
-    try {
-      registrationNumber = Integer.parseInt(parts[1]);
-    } catch (NumberFormatException e) {
-      throw new RegistrationNumberException(
-          "Not a valid registration number in data: '" + data + "'.");
+    if (Integer.parseInt(inputarr[3]) < RUECKMELDUNG_GEBUEHR){
+      int diff = RUECKMELDUNG_GEBUEHR-Integer.parseInt(inputarr[3]);
+      throw new NotPaidTuitionFeeException(String.valueOf(diff));
     }
 
-    courseOfStudies = parts[2];
+  }
 
-    if (!courseOfStudies.equalsIgnoreCase("Medieninformatik") &&
-        !courseOfStudies.equalsIgnoreCase("Technische Informatik") &&
-        !courseOfStudies.equalsIgnoreCase("Druck- und Medientechnik") &&
-        !courseOfStudies.equalsIgnoreCase("Screen Based Media")) {
-      throw new WrongCourseOfStudiesException(
-          "Course of studies \"" + courseOfStudies + "\" does not belong to Fachbereich VI.");
-    }
 
-    int tuitionPaid = -1;
-    try {
-      tuitionPaid = Integer.parseInt(parts[3]);
-    } catch (NumberFormatException e) {
-      throw new StudentParseException("Wrong tuition paid in data: '" + data + "'.");
-    }
-
-    int toBePaid = TUITION_FEE - tuitionPaid;
-    if (toBePaid > 0) {
-      throw new NotPaidTuitionFeeException(
-          "Student still has to pay " + toBePaid + " € tuition fee.");
-    }
+  //-------------------------------------------
+  // Methoden
+  public int getMatrikelnummer() {
+    return matrikelnummer;
   }
 
   public String getName() {
     return name;
   }
 
+  public String getStudiengang() {
+    return studiengang;
+  }
+
+  public void setMatrikelnummer(int matrikelnummer) {
+    this.matrikelnummer = matrikelnummer;
+  }
+
   public void setName(String name) {
     this.name = name;
   }
 
-  public int getRegistrationNumber() {
-    return registrationNumber;
+  public void setStudiengang(String studiengang) {
+    this.studiengang = studiengang;
   }
 
-  public void setRegistrationNumber(int registrationNumber) {
-    this.registrationNumber = registrationNumber;
-  }
-
-  public String getCourseOfStudies() {
-    return courseOfStudies;
-  }
-
-  public void setCourseOfStudies(String courseOfStudies) {
-    this.courseOfStudies = courseOfStudies;
-  }
-
-  @Override
   public String toString() {
-    return "Student [" +
-        "name='" + name +
-        ", registrationNumber=" + registrationNumber +
-        ", courseOfStudies='" + courseOfStudies +
-        ']';
+    return "name: " + name
+        + ", matrikelnummer: " + matrikelnummer +
+        ", studiengang:" + studiengang;
   }
 }
