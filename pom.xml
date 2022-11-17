@@ -37,8 +37,10 @@
     <module>lession01</module>
     <module>lession02</module>
     <module>lession03</module>
+    <module>lession04</module>
     <module>lab01</module>
     <module>lab02</module>
+    <module>lab03</module>
   </modules>
 
 </project>

@@ -16,6 +16,7 @@ void testis() {
         int[] arr_sort = new int[]{-12, 5, 8, 9, 9, 32, 41};
         assertArrayEquals(arr_sort,InsertionSort.sort(arr));
     }
+
     @Test
 void testqs() {
         int[] arr = new int[]{8, 9, 5, 32, 41, 9, -12};
