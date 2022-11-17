@@ -6,7 +6,8 @@ import java.util.Set;
 
 public class MainProgramm15 {
 
-  // equals()- und hashCode()-Methode
+  /* Ohne equals()- und hashCode()-Methode sind zwei Schiffe nur gleich,
+  wenn ihre Referenz-Variablen auf das selbe Objekt zeigen. */
 
   public static void main(String[] args) {
     //-----------------------------

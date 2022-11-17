@@ -19,12 +19,15 @@ public class MainProgramm12 {
     set1.add("d");
     set1.add("e");
     set1.add("f");
+    System.out.println(set1);
 
     //----------------------------
     // Eingabe: eine Collection
     Set<String> set2 = new HashSet<>(set1); // Set ist eine Collection
+    System.out.println(set2);
 
     List<String> liste = new ArrayList<>(set1);
     Set<String> set3 = new HashSet<>(liste); // List ist eine Collection
+    System.out.println(set3);
   }
 }

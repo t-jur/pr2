@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class MainProgramm16 {
 
-  // equals()- und hashCode()-Methode
+  // Die equals()- und hashCode()-Methode sollte überschrieben werden, wenn man eine eigene "Idendität" von Objekten braucht
 
   public static void main(String[] args) {
     //-----------------------------

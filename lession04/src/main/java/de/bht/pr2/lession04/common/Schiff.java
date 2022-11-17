@@ -1,4 +1,6 @@
-package de.bht.pr2.lession03.example03.schiff;
+package de.bht.pr2.lession04.common;
+
+import java.util.Objects;
 
 public class Schiff {
 
@@ -6,12 +8,22 @@ public class Schiff {
   protected String name = "";
   protected int laenge = 0;
   protected int breite = 0;
+  protected String besitzerName = "";
 
-  // Konstruktor
+  // Konstruktoren
   public Schiff(String name, int laenge, int breite) {
+    this(name, laenge, breite, "unbekannt");
+  }
+
+  public Schiff(String name, int laenge, int breite, String besitzerName) {
     this.name = name;
     this.laenge = laenge;
     this.breite = breite;
+    this.besitzerName = besitzerName;
+  }
+
+  public String getBesitzerName() {
+    return besitzerName;
   }
 
   public int getBreite() {
@@ -24,6 +36,10 @@ public class Schiff {
 
   public String getName() {
     return name;
+  }
+
+  public void setBesitzerName(String besitzerName) {
+    this.besitzerName = besitzerName;
   }
 
   public void setBreite(int breite) {
@@ -43,12 +59,38 @@ public class Schiff {
         + " Grad " + linksOderRechts + " ab.");
   }
 
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Schiff schiff = (Schiff) o;
+
+    if (laenge != schiff.laenge) {
+      return false;
+    }
+    if (breite != schiff.breite) {
+      return false;
+    }
+    return Objects.equals(name, schiff.name);
+  }
+
+  public int hashCode() {
+    return Objects.hash(name, laenge, breite);
+  }
+
   @Override
   public String toString() {
     return "Schiff [" +
         "name='" + name +
         ", laenge=" + laenge +
         ", breite=" + breite +
+        ", besitzerName='" + besitzerName +
         ']';
   }
 }

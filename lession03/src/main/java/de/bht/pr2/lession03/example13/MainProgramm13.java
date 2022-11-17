@@ -24,7 +24,7 @@ public class MainProgramm13 {
     set.add("c");
     System.out.println(set);
 
-    System.out.println("----- addAll(liste) -----");
+    System.out.println("----- addAll(x,y,z) -----");
     List<String> liste = new ArrayList<>();
     liste.add("x");
     liste.add("y");
